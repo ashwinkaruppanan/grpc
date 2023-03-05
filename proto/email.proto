@@ -1,0 +1,33 @@
+syntax="proto3";
+
+option go_package = "./proto";
+
+package email;
+
+service EmailGenerator{
+    rpc UnaryConnection(Name) returns (Email);
+    rpc ServerStreamConnection(NameList) returns (stream Email);
+    rpc ClientStreamConnection(stream Name) returns (EmailList);
+    rpc BidirectionalStreamConnection(stream Name) returns (stream Email);
+}
+
+message Name {
+    string name = 1;
+}
+
+message Email {
+    string email = 1;
+}
+
+message  NameList {
+    repeated string names = 1;
+}
+
+message EmailList {
+    repeated string EmailList = 1;
+}
+
+
+// proto compiler command 
+
+//protoc --go_out=. --go-grpc_out=. proto/email.proto
