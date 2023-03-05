@@ -130,7 +130,7 @@ func bidirectionalStreamingConnection(client pb.EmailGeneratorClient, name *pb.N
 		if err := stream.Send(req); err != nil {
 			log.Fatalf("Error while sending %v", err)
 		}
-		// time.Sleep(2 * time.Second)
+		time.Sleep(2 * time.Second)
 
 	}
 
